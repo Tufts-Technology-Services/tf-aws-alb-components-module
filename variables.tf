@@ -31,8 +31,10 @@ variable "target_protocol" {
   type = string
 }
 
+# deprecated now that listener rules are in place
 variable "target_ips" {
-  type = set(string)
+  type    = set(string)
+  default = null
 }
 
 variable "source_cidr" {
@@ -45,4 +47,15 @@ variable "listener_port" {
 
 variable "target_port" {
   type = number
+}
+
+variable "listener_rule_mappings" {
+  type = map(
+    object({
+      description      = string,
+      hostname_pattern = list(string),
+      target_ips       = set(string),
+    })
+  )
+  default = {}
 }

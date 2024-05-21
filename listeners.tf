@@ -4,9 +4,13 @@ resource "aws_lb_listener" "alb_listener" {
   protocol          = var.listener_protocol
   certificate_arn   = var.alb_cert_arn
 
-
   default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.alb_ip_tg.arn
+    type = "fixed-response"
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Your ALB is working.  You'll need to ensure you're passing enough info to create some listener rules for actions. "
+      status_code  = "200"
+    }
   }
+
 }

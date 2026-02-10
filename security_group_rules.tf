@@ -4,7 +4,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ingress" {
   for_each      = var.source_cidrs
 
   # note: to/from is a RANGE and not source/dest
-  cidr_ipv4   = var.each.value
+  cidr_ipv4   = each.value
   from_port   = var.listener_port
   ip_protocol = "tcp"
   to_port     = var.listener_port

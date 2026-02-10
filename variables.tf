@@ -38,7 +38,7 @@ variable "target_ips" {
 }
 
 variable "source_cidrs" {
-  type = list(string)
+  type = set(string)
   description = "the list of source CIDR ranges from which to allow traffic. Added to security group. Single IPs should be entered as a /32."
 }
 

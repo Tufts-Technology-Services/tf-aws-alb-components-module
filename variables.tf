@@ -37,8 +37,9 @@ variable "target_ips" {
   default = null
 }
 
-variable "source_cidr" {
-  type = string
+variable "source_cidrs" {
+  type = list(string)
+  description = "the list of source CIDR ranges from which to allow traffic."
 }
 
 variable "listener_port" {

@@ -2,6 +2,8 @@
 
 This module helps create listener, target group, target group attachment, and security group rules for a pre-existing ALB. It uses concepts similar to dependency injection, which means it requires an ALB to already be created before usage.
 
+If you need to release a new version of the module, please see: [Releasing a new version of a terraform module within a separate repository](https://tuftswork.atlassian.net/wiki/spaces/EnterpriseSystems/pages/2358935554/Releasing+a+new+version+of+a+terraform+module+within+a+separate+repository)
+
 ## Example
 
 This is mostly intended for usage in setting up public-facing ALBs in the central Network account, but it might be usable for private ALBs, as well.
@@ -39,7 +41,7 @@ module "my-alb-nonprod-components" {
   security_group_id = aws_security_group.my-sg.id
   listener_protocol = "HTTPS"
   target_protocol   = "HTTPS"
-  source_cidr       = local.all_ips
+  source_cidr       = ["0.0.0.0/0"]
 
   # these ips are the private 10.* ips of an NLB in the workload account
   listener_rule_mappings = {

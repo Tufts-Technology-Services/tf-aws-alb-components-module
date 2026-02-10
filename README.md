@@ -101,7 +101,7 @@ No modules.
 | <a name="input_listener_protocol"></a> [listener\_protocol](#input\_listener\_protocol) | n/a | `string` | n/a | yes |
 | <a name="input_listener_rule_mappings"></a> [listener\_rule\_mappings](#input\_listener\_rule\_mappings) | n/a | <pre>map(<br/>    object({<br/>      description      = string,<br/>      hostname_pattern = list(string),<br/>      target_ips       = set(string),<br/>    })<br/>  )</pre> | `{}` | no |
 | <a name="input_security_group_id"></a> [security\_group\_id](#input\_security\_group\_id) | [external] ID of SG to add rules to allow traffic | `string` | n/a | yes |
-| <a name="input_source_cidr"></a> [source\_cidr](#input\_source\_cidr) | n/a | `string` | n/a | yes |
+| <a name="input_source_cidrs"></a> [source\_cidrs](#input\_source\_cidrs) | the list of source CIDR ranges from which to allow traffic. Added to security group. Single IPs should be entered as a /32. | `list(string)` | n/a | yes |
 | <a name="input_target_ips"></a> [target\_ips](#input\_target\_ips) | deprecated now that listener rules are in place | `set(string)` | `null` | no |
 | <a name="input_target_port"></a> [target\_port](#input\_target\_port) | n/a | `number` | n/a | yes |
 | <a name="input_target_protocol"></a> [target\_protocol](#input\_target\_protocol) | n/a | `string` | n/a | yes |
